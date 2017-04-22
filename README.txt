@@ -1,0 +1,2 @@
+This is a simple program for controlling an led to turn on/off using nodejs and some html.  Keep in mind to include express, socket.io, and wiring-pi if you want to follow
+my code.  Make sure to add a series resistor to your led, they'll last longer.

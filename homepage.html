@@ -1,0 +1,53 @@
+<html>
+<head>
+<link href="/favicon.ico" type="image/x-icon" rel="icon" />
+<script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="/socket.io/socket.io.js"></script>
+</head>
+
+<body style = "margin-top: 20%">
+	<div class = "container">
+		<div class = "row">
+			<div class = "col-lg-4 col-md-4 col-sm-4 col-xs-4">
+			</div>
+			<div class = "col-lg-4 col-md-4 col-sm-4 col-xs-4" style = "text-align: center">
+		<button id = "mybtn" class = "btn btn-primary custombtn" style="outline: none; background-color: yellow; color:black; font-size: 300%; " >led  </button>
+			</div>
+			<div class = "col-lg-4 col-md-4 col-sm-4 col-xs-4">
+			</div>
+		</div>
+		</div>
+	</div>
+
+
+	<script>
+		var count = 0;//connecting the led to the webpage
+		$(function(){
+			var socket = io.connect();
+
+			var led = $("#mybtn");
+
+			led.on('click',function(e){
+				e.preventDefault();
+				if(count === 0)//changing the states of the led
+				{
+					socket.emit('1');
+					count = 1;
+				}
+				else if(count === 1)
+				{
+					socket.emit('0');
+					count = 0;
+				}
+			});
+		});
+	</script>
+</body>
+
+</html>
