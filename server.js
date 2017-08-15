@@ -4,7 +4,6 @@ var express= require('express');//setup of all required modules
 var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io').listen(server);
-var
 var state = 1;
 var wpi = require('wiring-pi');
 var configPin = 7;
